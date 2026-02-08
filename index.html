@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Prophecy Machine</title>
+<meta name="description" content="How the world's top consultancies publish contradictory AI narratives — where every position, bullish or bearish, opens a new revenue stream. Based on original research across 100+ publications.">
+<meta property="og:title" content="The AI Prophecy Machine">
+<meta property="og:description" content="How McKinsey, Deloitte, EY, KPMG &amp; PwC publish contradictory AI narratives &mdash; where every position opens a new revenue stream. 100+ sources analysed.">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The AI Prophecy Machine">
+<meta name="twitter:description" content="How top consultancies publish contradictory AI narratives &mdash; where every position opens a new revenue stream. 100+ sources analysed.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #06060e;
+  --bg-surface: #0d0d1a;
+  --bg-card: #12122a;
+  --bg-card-hover: #1a1a3e;
+  --text: #e8e8f0;
+  --text-secondary: #8888a8;
+  --text-muted: #555570;
+  --red: #ef4444;
+  --red-glow: rgba(239,68,68,0.15);
+  --red-soft: #fca5a5;
+  --teal: #06b6d4;
+  --teal-glow: rgba(6,182,212,0.15);
+  --teal-soft: #67e8f9;
+  --gold: #f59e0b;
+  --gold-glow: rgba(245,158,11,0.15);
+  --purple: #8b5cf6;
+  --purple-glow: rgba(139,92,246,0.15);
+  --green: #10b981;
+  --border: rgba(255,255,255,0.06);
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Progress Bar ── */
+#progress {
+  position: fixed; top:0; left:0; height:3px; z-index:1000;
+  background: linear-gradient(90deg, var(--red), var(--gold), var(--teal));
+  width:0%; transition: width 0.15s linear;
+}
+
+/* ── Navigation ── */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:999;
+  padding: 0.75rem 2rem;
+  background: rgba(6,6,14,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  display:flex; align-items:center; justify-content:space-between;
+  transform: translateY(-100%);
+  transition: transform 0.4s ease;
+}
+nav.visible { transform: translateY(0); }
+nav .brand { font-weight:700; font-size:0.85rem; letter-spacing:0.05em; text-transform:uppercase; color:var(--text-secondary); }
+nav .nav-links { display:flex; gap:1.5rem; }
+nav .nav-links a {
+  font-size:0.75rem; color:var(--text-muted); text-decoration:none;
+  letter-spacing:0.04em; text-transform:uppercase; font-weight:500;
+  transition: color 0.3s;
+}
+nav .nav-links a:hover, nav .nav-links a.active { color: var(--gold); }
+
+/* ── Shared Section ── */
+section { padding: 6rem 1.5rem; max-width:1100px; margin:0 auto; }
+.section-label {
+  font-size:0.7rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase;
+  margin-bottom:0.75rem; display:inline-block; padding:0.3rem 0.8rem;
+  border-radius:100px;
+}
+.section-title {
+  font-family: var(--font-serif); font-size: clamp(2rem,5vw,3.5rem);
+  font-weight:900; line-height:1.15; margin-bottom:1rem;
+}
+.section-subtitle {
+  font-size: clamp(1rem,2vw,1.2rem); color:var(--text-secondary);
+  max-width:700px; line-height:1.8; margin-bottom:3rem;
+}
+
+/* ── Animations ── */
+.reveal {
+  opacity:0; transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible { opacity:1; transform:translateY(0); }
+.reveal-left {
+  opacity:0; transform: translateX(-50px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-left.visible { opacity:1; transform:translateX(0); }
+.reveal-right {
+  opacity:0; transform: translateX(50px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-right.visible { opacity:1; transform:translateX(0); }
+.reveal-scale {
+  opacity:0; transform: scale(0.9);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal-scale.visible { opacity:1; transform:scale(1); }
+
+/* Stagger children */
+.stagger-children .reveal:nth-child(1) { transition-delay: 0.05s; }
+.stagger-children .reveal:nth-child(2) { transition-delay: 0.12s; }
+.stagger-children .reveal:nth-child(3) { transition-delay: 0.19s; }
+.stagger-children .reveal:nth-child(4) { transition-delay: 0.26s; }
+.stagger-children .reveal:nth-child(5) { transition-delay: 0.33s; }
+.stagger-children .reveal:nth-child(6) { transition-delay: 0.40s; }
+
+/* ══════════════════════════════════════
+   HERO
+   ══════════════════════════════════════ */
+#hero {
+  min-height:100vh; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; text-align:center;
+  padding:2rem; position:relative; overflow:hidden;
+}
+#hero::before {
+  content:''; position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 40%, rgba(239,68,68,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 30% 70%, rgba(6,182,212,0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 70% 60%, rgba(245,158,11,0.04) 0%, transparent 60%);
+  pointer-events:none;
+}
+
+/* ── Hero background image ── */
+.hero-bg-image {
+  position:absolute; top:50%; left:50%; transform:translate(-50%, -50%);
+  width:clamp(350px, 50vw, 650px); height:auto;
+  pointer-events:none; z-index:0;
+  opacity:0.18;
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 75%);
+  filter: grayscale(0.3) brightness(0.9);
+}
+
+@media (max-width:768px) {
+  .hero-bg-image { width:clamp(280px, 75vw, 450px); opacity:0.14; }
+}
+@media (max-width:480px) {
+  .hero-bg-image { width:280px; opacity:0.12; }
+}
+
+/* ── Related Research Banner ── */
+.related-banner {
+  max-width:740px; margin:0 auto; padding:0 2rem;
+  position:relative; z-index:5;
+}
+.related-banner a {
+  display:flex; align-items:center; gap:1.5rem;
+  padding:1.2rem 1.8rem;
+  background: linear-gradient(135deg, rgba(139,92,246,0.08) 0%, rgba(245,158,11,0.06) 50%, rgba(6,182,212,0.05) 100%);
+  border:1px solid rgba(139,92,246,0.2);
+  border-radius:14px;
+  text-decoration:none; color:var(--text);
+  transition: transform 0.25s, border-color 0.3s, box-shadow 0.3s;
+}
+.related-banner a:hover {
+  transform:translateY(-2px);
+  border-color:rgba(139,92,246,0.4);
+  box-shadow: 0 8px 40px rgba(139,92,246,0.12), 0 0 60px rgba(245,158,11,0.06);
+}
+.related-banner .rb-badge {
+  flex-shrink:0;
+  font-size:0.58rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase;
+  color:var(--purple); background:rgba(139,92,246,0.12);
+  padding:0.3rem 0.6rem; border-radius:6px; white-space:nowrap;
+}
+.related-banner .rb-body { flex:1; min-width:0; }
+.related-banner .rb-title {
+  font-family:var(--font-serif); font-size:1rem; font-weight:700;
+  line-height:1.3; margin-bottom:0.3rem;
+}
+.related-banner .rb-title .rb-highlight {
+  background: linear-gradient(135deg, var(--purple), var(--gold));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.related-banner .rb-desc {
+  font-size:0.72rem; color:var(--text-muted); line-height:1.5;
+}
+.related-banner .rb-desc strong { color:var(--text-secondary); }
+.related-banner .rb-arrow {
+  flex-shrink:0; font-size:1.2rem; color:var(--purple); opacity:0.5;
+  transition: transform 0.25s, opacity 0.25s;
+}
+.related-banner a:hover .rb-arrow { transform:translateX(4px); opacity:1; }
+
+@media (max-width:768px) {
+  .related-banner a { flex-direction:column; align-items:flex-start; gap:0.8rem; padding:1rem 1.2rem; }
+  .related-banner .rb-arrow { display:none; }
+}
+
+.hero-eyebrow {
+  font-size:0.7rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:1.5rem; position:relative; z-index:5;
+}
+.hero-title {
+  font-family:var(--font-serif); font-size:clamp(2.8rem,7vw,5.5rem);
+  font-weight:900; line-height:1.05; margin-bottom:1.5rem; position:relative;
+  max-width:900px; z-index:5;
+}
+.hero-title .gradient-text {
+  background: linear-gradient(135deg, var(--red) 0%, var(--gold) 50%, var(--teal) 100%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-subtitle {
+  font-size:clamp(1rem,2vw,1.25rem); color:var(--text-secondary);
+  max-width:650px; line-height:1.8; margin-bottom:1rem; position:relative; z-index:5;
+}
+.hero-meta {
+  font-size:0.8rem; color:var(--text-muted); max-width:600px;
+  line-height:1.6; margin-bottom:3rem; position:relative; z-index:5;
+}
+.scroll-cue {
+  position:absolute; bottom:2rem;
+  display:flex; flex-direction:column; align-items:center; gap:0.5rem;
+  z-index:5;
+}
+.scroll-cue span { font-size:0.65rem; color:var(--text-muted); letter-spacing:0.15em; text-transform:uppercase; }
+.scroll-arrow {
+  width:20px; height:20px; border-right:2px solid var(--text-muted);
+  border-bottom:2px solid var(--text-muted); transform:rotate(45deg);
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+@keyframes scrollBounce {
+  0%,100% { transform:rotate(45deg) translate(0,0); opacity:0.4; }
+  50% { transform:rotate(45deg) translate(5px,5px); opacity:1; }
+}
+
+/* ── Key stat row (hero) ── */
+.hero-stats {
+  display:flex; gap:2rem; flex-wrap:wrap; justify-content:center;
+  margin-bottom:2.5rem; position:relative; z-index:5;
+}
+.hero-stat {
+  text-align:center; padding:1rem 1.5rem;
+  border:1px solid var(--border); border-radius:12px;
+  background:rgba(255,255,255,0.02);
+}
+.hero-stat .num {
+  font-size:1.8rem; font-weight:800; line-height:1;
+  margin-bottom:0.25rem;
+}
+.hero-stat .label { font-size:0.7rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.08em; }
+
+/* ══════════════════════════════════════
+   SECTION 1: THE CONTRADICTION ENGINE
+   ══════════════════════════════════════ */
+#contradictions { padding-top:4rem; }
+#contradictions .section-label { background:var(--red-glow); color:var(--red); }
+
+.contradiction-pair {
+  display:grid; grid-template-columns:1fr auto 1fr;
+  gap:0; align-items:stretch; margin-bottom:2.5rem;
+  border-radius:16px; overflow:hidden;
+  border:1px solid var(--border);
+  background:var(--bg-surface);
+}
+.contradiction-pair .side {
+  padding:2rem;
+}
+.contradiction-pair .side-panic {
+  border-right:none;
+  background: linear-gradient(135deg, rgba(239,68,68,0.06) 0%, transparent 100%);
+}
+.contradiction-pair .side-calm {
+  border-left:none;
+  background: linear-gradient(135deg, transparent 0%, rgba(6,182,212,0.06) 100%);
+}
+.side-tag {
+  font-size:0.6rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;
+  padding:0.2rem 0.6rem; border-radius:100px; display:inline-block; margin-bottom:0.75rem;
+}
+.side-panic .side-tag { background:var(--red-glow); color:var(--red); }
+.side-calm .side-tag { background:var(--teal-glow); color:var(--teal); }
+
+.quote-text {
+  font-family:var(--font-serif); font-size:1.05rem; font-style:italic;
+  line-height:1.6; margin-bottom:0.75rem; position:relative;
+  padding-left:1rem; border-left:2px solid var(--border);
+}
+.side-panic .quote-text { border-left-color: rgba(239,68,68,0.3); }
+.side-calm .quote-text { border-left-color: rgba(6,182,212,0.3); }
+
+.quote-source {
+  font-size:0.72rem; color:var(--text-muted); line-height:1.4;
+}
+.quote-source strong { color:var(--text-secondary); font-weight:600; }
+
+.vs-divider {
+  display:flex; align-items:center; justify-content:center;
+  width:60px; min-width:60px;
+  background:var(--bg-card);
+  border-left:1px solid var(--border); border-right:1px solid var(--border);
+  position:relative;
+}
+.vs-divider span {
+  font-size:0.75rem; font-weight:800; color:var(--text-muted);
+  letter-spacing:0.05em;
+  background:var(--bg-card); padding:0.5rem 0; position:relative; z-index:1;
+}
+.vs-divider::before {
+  content:''; position:absolute; top:0; bottom:0; left:50%;
+  width:1px; background:var(--border);
+}
+
+.firm-badge {
+  display:inline-block; font-size:0.65rem; font-weight:700; letter-spacing:0.1em;
+  text-transform:uppercase; padding:0.15rem 0.5rem; border-radius:4px;
+  margin-bottom:0.5rem;
+  background:rgba(255,255,255,0.05); color:var(--text-secondary);
+}
+.insight-box {
+  margin-top:0.75rem; padding:0.75rem 1rem; border-radius:8px;
+  background:rgba(245,158,11,0.06); border:1px solid rgba(245,158,11,0.15);
+  font-size:0.78rem; color:var(--gold); line-height:1.5;
+}
+.insight-box strong { color: #fbbf24; }
+
+/* ══════════════════════════════════════
+   SECTION 2: THE ADOPTION MIRAGE
+   ══════════════════════════════════════ */
+#adoption { padding-top:4rem; }
+#adoption .section-label { background:var(--purple-glow); color:var(--purple); }
+
+.bar-chart { margin:2.5rem 0; }
+.bar-row {
+  display:grid; grid-template-columns:200px 1fr 70px;
+  align-items:center; gap:1rem; margin-bottom:1.2rem;
+}
+.bar-label {
+  font-size:0.78rem; color:var(--text-secondary); text-align:right; line-height:1.3;
+}
+.bar-label .bar-sublabel { font-size:0.65rem; color:var(--text-muted); display:block; }
+.bar-track {
+  height:36px; background:rgba(255,255,255,0.03); border-radius:6px;
+  position:relative; overflow:hidden;
+}
+.bar-fill {
+  height:100%; border-radius:6px; width:0%;
+  transition: width 1.5s cubic-bezier(0.25,0.8,0.25,1);
+  display:flex; align-items:center; padding-left:0.75rem;
+}
+.bar-fill.animated { /* width set by JS */ }
+.bar-value {
+  font-size:0.85rem; font-weight:800; text-align:left;
+}
+.bar-divider {
+  grid-column:1/-1; height:1px; background:var(--border); margin:0.5rem 0;
+}
+.bar-group-label {
+  grid-column:1/-1; font-size:0.65rem; font-weight:700; letter-spacing:0.12em;
+  text-transform:uppercase; padding:0.5rem 0 0.25rem;
+}
+.bar-group-label.consultancy { color:var(--red); }
+.bar-group-label.independent { color:var(--teal); }
+
+.big-stat-row {
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
+  gap:1.5rem; margin:3rem 0;
+}
+.big-stat {
+  text-align:center; padding:2rem 1.5rem;
+  border:1px solid var(--border); border-radius:16px;
+  background:var(--bg-surface);
+}
+.big-stat .num {
+  font-size:clamp(2.5rem,5vw,3.5rem); font-weight:900; line-height:1; margin-bottom:0.5rem;
+}
+.big-stat .desc { font-size:0.8rem; color:var(--text-secondary); line-height:1.5; }
+.big-stat .src { font-size:0.65rem; color:var(--text-muted); margin-top:0.5rem; }
+
+/* ══════════════════════════════════════
+   SECTION 3: ROI REALITY CHECK
+   ══════════════════════════════════════ */
+#roi { padding-top:4rem; }
+#roi .section-label { background:var(--gold-glow); color:var(--gold); }
+
+.promise-vs-reality {
+  display:grid; grid-template-columns:1fr 1fr; gap:2rem;
+  margin:2rem 0;
+}
+.promise-card, .reality-card {
+  padding:2.5rem 2rem; border-radius:16px;
+  border:1px solid var(--border);
+}
+.promise-card {
+  background: linear-gradient(135deg, rgba(239,68,68,0.06), var(--bg-surface));
+  border-color:rgba(239,68,68,0.15);
+}
+.reality-card {
+  background: linear-gradient(135deg, var(--bg-surface), rgba(6,182,212,0.06));
+  border-color:rgba(6,182,212,0.15);
+}
+.pvr-label {
+  font-size:0.65rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;
+  margin-bottom:1.5rem;
+}
+.promise-card .pvr-label { color:var(--red); }
+.reality-card .pvr-label { color:var(--teal); }
+.pvr-item {
+  margin-bottom:1.5rem; padding-bottom:1.5rem; border-bottom:1px solid var(--border);
+}
+.pvr-item:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
+.pvr-num {
+  font-size:clamp(1.8rem,3vw,2.5rem); font-weight:900; line-height:1; margin-bottom:0.3rem;
+}
+.promise-card .pvr-num { color:var(--red-soft); }
+.reality-card .pvr-num { color:var(--teal-soft); }
+.pvr-desc { font-size:0.82rem; color:var(--text-secondary); line-height:1.5; }
+.pvr-src { font-size:0.65rem; color:var(--text-muted); margin-top:0.3rem; }
+
+/* Standalone highlight stat */
+.highlight-stat {
+  text-align:center; padding:3.5rem 2rem; margin:3rem 0;
+  border-radius:20px; position:relative; overflow:hidden;
+  border:1px solid var(--border);
+  background: var(--bg-surface);
+}
+.highlight-stat::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse at center, rgba(239,68,68,0.08), transparent 70%);
+}
+.highlight-stat .num {
+  font-size:clamp(3rem,8vw,6rem); font-weight:900; line-height:1;
+  position:relative; margin-bottom:0.5rem;
+}
+.highlight-stat .desc {
+  font-size:1.1rem; color:var(--text-secondary); position:relative; max-width:500px; margin:0 auto;
+  line-height:1.6;
+}
+.highlight-stat .src {
+  font-size:0.7rem; color:var(--text-muted); position:relative; margin-top:0.75rem;
+}
+
+/* ══════════════════════════════════════
+   SECTION 4: FIVE FIRMS, ONE PLAYBOOK
+   ══════════════════════════════════════ */
+#firms { padding-top:4rem; }
+#firms .section-label { background:rgba(255,255,255,0.05); color:var(--text-secondary); }
+
+.firm-cards { display:grid; grid-template-columns:1fr; gap:1.5rem; margin-top:2rem; }
+
+.firm-card {
+  border:1px solid var(--border); border-radius:16px;
+  background:var(--bg-surface); overflow:hidden;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.firm-card:hover { border-color:rgba(255,255,255,0.12); }
+.firm-card-header {
+  padding:1.5rem 2rem; cursor:pointer; display:flex;
+  align-items:center; justify-content:space-between;
+  user-select:none;
+}
+.firm-card-header:hover { background:rgba(255,255,255,0.02); }
+.firm-name {
+  font-family:var(--font-serif); font-size:1.5rem; font-weight:700;
+}
+.firm-oneliner { font-size:0.82rem; color:var(--text-muted); margin-top:0.2rem; }
+.firm-toggle {
+  width:32px; height:32px; border-radius:50%; border:1px solid var(--border);
+  display:flex; align-items:center; justify-content:center;
+  transition: transform 0.3s, background 0.3s; font-size:1.2rem; color:var(--text-muted);
+  background:transparent; flex-shrink:0;
+}
+.firm-card.open .firm-toggle { transform:rotate(45deg); background:rgba(255,255,255,0.05); }
+
+.firm-card-body {
+  max-height:0; overflow:hidden; transition: max-height 0.5s ease;
+}
+.firm-card.open .firm-card-body { max-height:2000px; }
+.firm-card-inner { padding:0 2rem 2rem; }
+.firm-contradiction {
+  display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;
+  margin-bottom:1.5rem;
+}
+.firm-quote-card {
+  padding:1.25rem; border-radius:10px;
+  border:1px solid var(--border);
+}
+.firm-quote-card.panic {
+  background:rgba(239,68,68,0.04); border-color:rgba(239,68,68,0.12);
+}
+.firm-quote-card.calm {
+  background:rgba(6,182,212,0.04); border-color:rgba(6,182,212,0.12);
+}
+.firm-quote-card .fq-tag {
+  font-size:0.6rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+  margin-bottom:0.5rem; display:inline-block;
+}
+.firm-quote-card.panic .fq-tag { color:var(--red); }
+.firm-quote-card.calm .fq-tag { color:var(--teal); }
+.firm-quote-card .fq-text {
+  font-family:var(--font-serif); font-size:0.92rem; font-style:italic;
+  line-height:1.6; margin-bottom:0.5rem;
+}
+.firm-quote-card .fq-src { font-size:0.65rem; color:var(--text-muted); }
+.firm-takeaway {
+  padding:1rem 1.25rem; border-radius:10px;
+  background:rgba(245,158,11,0.05); border:1px solid rgba(245,158,11,0.12);
+  font-size:0.82rem; color:var(--text-secondary); line-height:1.6;
+}
+.firm-takeaway strong { color:var(--gold); }
+
+/* ══════════════════════════════════════
+   SECTION 5: FOLLOW THE MONEY
+   ══════════════════════════════════════ */
+#money { padding-top:4rem; }
+#money .section-label { background:var(--gold-glow); color:var(--gold); }
+
+.revenue-cards {
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+  gap:1.5rem; margin:2rem 0;
+}
+.revenue-card {
+  padding:2rem; border-radius:16px; border:1px solid var(--border);
+  background:var(--bg-surface); position:relative; overflow:hidden;
+}
+.revenue-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  background:linear-gradient(90deg, var(--gold), transparent);
+}
+.revenue-card .rc-firm {
+  font-family:var(--font-serif); font-size:1.3rem; font-weight:700;
+  margin-bottom:1rem;
+}
+.revenue-card .rc-num {
+  font-size:2.2rem; font-weight:900; color:var(--gold); line-height:1;
+  margin-bottom:0.3rem;
+}
+.revenue-card .rc-detail {
+  font-size:0.8rem; color:var(--text-secondary); line-height:1.6;
+  margin-bottom:0.75rem;
+}
+.revenue-card .rc-sub {
+  font-size:0.75rem; color:var(--text-muted); line-height:1.5;
+  padding-top:0.75rem; border-top:1px solid var(--border);
+}
+
+/* Flywheel */
+.flywheel {
+  margin:3rem auto; max-width:700px; position:relative;
+  padding:3rem 2rem;
+  border:1px solid var(--border); border-radius:20px;
+  background:var(--bg-surface);
+}
+.flywheel-title {
+  text-align:center; font-family:var(--font-serif); font-size:1.3rem;
+  font-weight:700; margin-bottom:2rem; color:var(--gold);
+}
+.flywheel-steps {
+  display:flex; flex-direction:column; gap:0;
+  position:relative;
+}
+.flywheel-step {
+  display:flex; align-items:center; gap:1.25rem;
+  padding:1rem 0;
+  position:relative;
+}
+.flywheel-step::before {
+  content:''; position:absolute; left:19px; top:0; bottom:0; width:2px;
+  background:rgba(245,158,11,0.15);
+}
+.flywheel-step:first-child::before { top:50%; }
+.flywheel-step:last-child::before { bottom:50%; }
+.flywheel-num {
+  width:40px; height:40px; border-radius:50%; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  font-size:0.8rem; font-weight:800; position:relative; z-index:1;
+  background:var(--bg-card); border:2px solid rgba(245,158,11,0.3);
+  color:var(--gold);
+}
+.flywheel-text { font-size:0.88rem; color:var(--text-secondary); line-height:1.5; }
+.flywheel-text strong { color:var(--text); }
+.flywheel-loop {
+  text-align:center; margin-top:1.5rem; font-size:0.78rem;
+  color:var(--gold); font-weight:600; letter-spacing:0.05em;
+}
+
+/* ══════════════════════════════════════
+   SECTION 6: THE INDEPENDENT RECORD
+   ══════════════════════════════════════ */
+#evidence { padding-top:4rem; }
+#evidence .section-label { background:var(--teal-glow); color:var(--teal); }
+
+.evidence-grid {
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr));
+  gap:1.5rem; margin:2rem 0;
+}
+.evidence-card {
+  padding:2rem; border-radius:16px; border:1px solid var(--border);
+  background:var(--bg-surface);
+}
+.evidence-card .ec-source {
+  font-size:0.65rem; font-weight:700; letter-spacing:0.12em;
+  text-transform:uppercase; color:var(--teal); margin-bottom:1rem;
+}
+.evidence-card .ec-finding {
+  font-size:0.92rem; line-height:1.7; color:var(--text-secondary);
+  margin-bottom:0.75rem;
+}
+.evidence-card .ec-finding strong { color:var(--text); font-weight:700; }
+.evidence-card .ec-stat {
+  font-size:1.6rem; font-weight:900; color:var(--teal-soft); margin-bottom:0.25rem;
+}
+
+/* ── Document download links ── */
+.doc-download {
+  display:inline-flex; align-items:center; gap:0.4rem;
+  padding:0.5rem 1rem; border-radius:8px; font-size:0.75rem; font-weight:600;
+  text-decoration:none; border:1px solid rgba(16,185,129,0.2);
+  background:rgba(16,185,129,0.06); color:var(--green);
+  transition: background 0.3s, border-color 0.3s; align-self:flex-start;
+}
+.doc-download:hover {
+  background:rgba(16,185,129,0.12); border-color:rgba(16,185,129,0.4);
+}
+.doc-download svg { width:14px; height:14px; }
+
+/* ══════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════ */
+footer {
+  text-align:center; padding:4rem 2rem 3rem;
+  border-top:1px solid var(--border); max-width:700px; margin:0 auto;
+}
+footer .ft-title {
+  font-family:var(--font-serif); font-size:1.3rem; font-weight:700;
+  margin-bottom:1rem;
+}
+footer .ft-text {
+  font-size:0.82rem; color:var(--text-muted); line-height:1.7;
+  margin-bottom:1.5rem;
+}
+.share-row { display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap; }
+.share-btn {
+  display:inline-flex; align-items:center; gap:0.4rem;
+  padding:0.6rem 1.2rem; border-radius:100px;
+  font-size:0.78rem; font-weight:600; text-decoration:none;
+  transition: transform 0.2s, box-shadow 0.2s; cursor:pointer;
+  border:1px solid var(--border); background:var(--bg-surface); color:var(--text);
+}
+.share-btn:hover { transform:translateY(-2px); box-shadow:0 4px 20px rgba(0,0,0,0.4); }
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════ */
+@media (max-width:768px) {
+  section { padding:4rem 1rem; }
+  .contradiction-pair { grid-template-columns:1fr; }
+  .vs-divider {
+    width:auto; min-width:0; height:40px;
+    border-left:none; border-right:none;
+    border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+  }
+  .vs-divider::before { display:none; }
+  .promise-vs-reality { grid-template-columns:1fr; }
+  .firm-contradiction { grid-template-columns:1fr; }
+  .bar-row { grid-template-columns:1fr; gap:0.3rem; }
+  .bar-label { text-align:left; }
+  .bar-value { text-align:right; }
+  nav .nav-links { display:none; }
+  .hero-stats { gap:1rem; }
+  .hero-stat { padding:0.75rem 1rem; }
+  .hero-stat .num { font-size:1.4rem; }
+}
+@media (max-width:480px) {
+  .revenue-cards { grid-template-columns:1fr; }
+  .evidence-grid { grid-template-columns:1fr; }
+  .big-stat-row { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── Progress ── -->
+<div id="progress"></div>
+
+<!-- ── Navigation ── -->
+<nav id="nav">
+  <div class="brand">The AI Prophecy Machine</div>
+  <div class="nav-links">
+    <a href="#contradictions">Contradictions</a>
+    <a href="#adoption">Adoption</a>
+    <a href="#roi">ROI</a>
+    <a href="#firms">Firms</a>
+    <a href="#money">Revenue</a>
+    <a href="#evidence">Evidence</a>
+    <a href="#implications">So What</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════
+     HERO
+     ══════════════════════════════════════ -->
+<section id="hero">
+
+  <!-- Hero background image -->
+  <img class="hero-bg-image" src="ChatGPT Image Feb 8, 2026, 02_58_03 PM.png" alt="" aria-hidden="true" />
+
+  <div class="hero-eyebrow">Original Research &middot; 2022 &ndash; 2026</div>
+  <h1 class="hero-title">The <span class="gradient-text">AI Prophecy Machine</span></h1>
+  <p class="hero-subtitle">How the world's top consultancies publish contradictory AI narratives &mdash; where every position, bullish or bearish, opens a new revenue stream.</p>
+  <p class="hero-meta">Based on original research across 100+ publications from McKinsey, Deloitte, EY, KPMG &amp; PwC, cross-referenced with independent data from the OECD, Gartner, Stanford AI Index &amp; public earnings transcripts.</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="num" style="color:var(--red)">5</div>
+      <div class="label">Firms Analysed</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num" style="color:var(--gold)">100+</div>
+      <div class="label">Publications Reviewed</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num" style="color:var(--teal)">4</div>
+      <div class="label">Independent Sources</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num" style="color:var(--purple)">2022–26</div>
+      <div class="label">Time Span</div>
+    </div>
+  </div>
+  <div class="scroll-cue">
+    <span>Scroll to explore</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ── Related Research Banner ── -->
+<div class="related-banner reveal">
+  <a href="https://sparky26.github.io/dunning_AI/" target="_blank" rel="noopener">
+    <span class="rb-badge">Companion Research</span>
+    <div class="rb-body">
+      <div class="rb-title">The <span class="rb-highlight">Dunning-Kruger</span> of AI Disruption</div>
+      <div class="rb-desc">How market confidence follows the classic cognitive bias curve &mdash; from <strong>ChatGPT hype</strong> to <strong>Peak of Mount Stupid (88%&nbsp;confidence)</strong>, through the <strong>Valley of Despair</strong>, to eventual equilibrium. Mapping the 2022&ndash;2030 AI disruption cycle with real data.</div>
+    </div>
+    <span class="rb-arrow">&rarr;</span>
+  </a>
+</div>
+
+<!-- ══════════════════════════════════════
+     SECTION 1: THE CONTRADICTION ENGINE
+     ══════════════════════════════════════ -->
+<section id="contradictions">
+  <div class="reveal">
+    <div class="section-label">Section 1</div>
+    <h2 class="section-title">The Contradiction Engine</h2>
+    <p class="section-subtitle">Every firm publishes incompatible messages &mdash; sometimes in the same year, sometimes within months. The critical insight: <strong style="color:var(--gold)">both sides of every contradiction sell a different consulting service.</strong></p>
+  </div>
+
+  <!-- KPMG — strongest: same year, same firm, same country -->
+  <div class="contradiction-pair reveal">
+    <div class="side side-panic">
+      <div class="firm-badge">KPMG</div>
+      <div class="side-tag">Automation Push &middot; 2025</div>
+      <div class="quote-text">&ldquo;Agentic AI can fully automate what humans do.&rdquo;</div>
+      <div class="quote-source"><strong>KPMG US</strong> &middot; 2025</div>
+      <div class="insight-box"><strong>Sells:</strong> Agentic AI implementation &amp; automation at scale</div>
+    </div>
+    <div class="vs-divider"><span>VS</span></div>
+    <div class="side side-calm">
+      <div class="firm-badge">KPMG</div>
+      <div class="side-tag">Same Year, Same Firm</div>
+      <div class="quote-text">&ldquo;AI cannot yet replace human oversight. A human-in-the-loop approach is essential for trust and accountability.&rdquo;</div>
+      <div class="quote-source"><strong>KPMG US CLM Paper</strong> &middot; 2025</div>
+      <div class="insight-box"><strong>Sells:</strong> Governance, risk frameworks &amp; human-centred design consulting</div>
+    </div>
+  </div>
+
+  <!-- EY — strongest reversal, 24-month window -->
+  <div class="contradiction-pair reveal">
+    <div class="side side-panic">
+      <div class="firm-badge">EY</div>
+      <div class="side-tag">2023 Narrative</div>
+      <div class="quote-text">&ldquo;GenAI is democratizing the ability to use AI to create content and novel insights.&rdquo;</div>
+      <div class="quote-source"><strong>EY Global</strong> &middot; 2023</div>
+      <div class="insight-box"><strong>Sells:</strong> Broad GenAI enablement &amp; platform adoption</div>
+    </div>
+    <div class="vs-divider"><span>VS</span></div>
+    <div class="side side-calm">
+      <div class="firm-badge">EY</div>
+      <div class="side-tag">24 Months Later</div>
+      <div class="quote-text">&ldquo;AI has not democratized progress. It has concentrated it. For most, AI simply does not work.&rdquo;</div>
+      <div class="quote-source"><strong>EY China</strong> &middot; 2025 &middot; <em style="color:var(--text-muted);font-size:0.65rem">Published under the EY brand; never retracted by EY Global</em></div>
+      <div class="insight-box"><strong>Sells:</strong> Custom AI strategy for firms &ldquo;left behind&rdquo; by Big Tech</div>
+    </div>
+  </div>
+
+  <!-- Deloitte — 12-month reversal -->
+  <div class="contradiction-pair reveal">
+    <div class="side side-panic">
+      <div class="firm-badge">Deloitte</div>
+      <div class="side-tag">Tech Trends 2026</div>
+      <div class="quote-text">&ldquo;No corner of enterprise technology is untouched by AI. This year is all about scaling.&rdquo;</div>
+      <div class="quote-source"><strong>Deloitte Tech Trends 2026</strong></div>
+      <div class="insight-box"><strong>Sells:</strong> Enterprise-wide AI scaling &amp; integration programmes</div>
+    </div>
+    <div class="vs-divider"><span>VS</span></div>
+    <div class="side side-calm">
+      <div class="firm-badge">Deloitte</div>
+      <div class="side-tag">12 Months Earlier</div>
+      <div class="quote-text">&ldquo;On an enterprise time scale, AI advancements are still in a nascent phase — crawling or walking.&rdquo;</div>
+      <div class="quote-source"><strong>Deloitte Tech Trends 2025</strong> &middot; Dec 2024</div>
+      <div class="insight-box"><strong>Sells:</strong> AI readiness assessments, strategy workshops &amp; roadmapping</div>
+    </div>
+  </div>
+
+  <!-- McKinsey — 22-month window -->
+  <div class="contradiction-pair reveal">
+    <div class="side side-panic">
+      <div class="firm-badge">McKinsey</div>
+      <div class="side-tag">June 2023</div>
+      <div class="quote-text">&ldquo;Current technologies could automate activities absorbing 60&ndash;70% of employees&rsquo; time.&rdquo;</div>
+      <div class="quote-source"><strong>McKinsey Global Institute</strong> &middot; June 2023</div>
+      <div class="insight-box"><strong>Sells:</strong> Large-scale transformation &amp; workforce strategy engagements</div>
+    </div>
+    <div class="vs-divider"><span>VS</span></div>
+    <div class="side side-calm">
+      <div class="firm-badge">McKinsey</div>
+      <div class="side-tag">22 Months Later</div>
+      <div class="quote-text">&ldquo;A plurality (38%) predict gen AI will have little effect on workforce size over three years.&rdquo;</div>
+      <div class="quote-source"><strong>McKinsey State of AI Survey</strong> &middot; March 2025</div>
+      <div class="insight-box"><strong>Sells:</strong> AI augmentation pilots, reskilling programmes &amp; change management</div>
+    </div>
+  </div>
+
+  <!-- PwC — 36-month arc -->
+  <div class="contradiction-pair reveal">
+    <div class="side side-panic">
+      <div class="firm-badge">PwC</div>
+      <div class="side-tag">March 2023</div>
+      <div class="quote-text">&ldquo;AI in 2023 has reached a tipping point: Generative AI is so powerful it&rsquo;s poised to revolutionize how work gets done.&rdquo;</div>
+      <div class="quote-source"><strong>PwC</strong> &middot; March 2023</div>
+      <div class="insight-box"><strong>Sells:</strong> Urgent AI transformation programmes</div>
+    </div>
+    <div class="vs-divider"><span>VS</span></div>
+    <div class="side side-calm">
+      <div class="firm-badge">PwC</div>
+      <div class="side-tag">36 Months Later</div>
+      <div class="quote-text">&ldquo;Only 12% of CEOs say AI has delivered both cost and revenue benefits. 56% saw no significant financial gain.&rdquo;</div>
+      <div class="quote-source"><strong>PwC Global CEO Survey</strong> &middot; January 2026</div>
+      <div class="insight-box"><strong>Sells:</strong> AI value realisation, ROI diagnostics &amp; course-correction consulting</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SECTION 2: THE ADOPTION MIRAGE
+     ══════════════════════════════════════ -->
+<section id="adoption">
+  <div class="reveal">
+    <div class="section-label">Section 2</div>
+    <h2 class="section-title">The Adoption Mirage</h2>
+    <p class="section-subtitle">Consultancy surveys report 78&ndash;88% AI &ldquo;adoption.&rdquo; Independent data tells a radically different story. The gap is not an accident &mdash; it&rsquo;s a definitional choice.</p>
+  </div>
+
+  <div class="insight-box reveal" style="margin-bottom:2.5rem; background:rgba(139,92,246,0.06); border-color:rgba(139,92,246,0.15); color:var(--text-secondary);">
+    <strong style="color:var(--purple);">Why the numbers diverge:</strong> Consultancy surveys ask senior executives at large enterprises whether <em>anyone, anywhere</em> in their organisation uses AI for <em>anything</em> &mdash; a threshold so low that a single employee using ChatGPT counts. They survey their own clients and prospects (selection bias) and rely on self-reported answers (no CEO says &ldquo;we&rsquo;re behind on AI&rdquo;). Independent bodies like the OECD measure all firms with 10+ employees and ask whether AI is embedded in <em>core business operations</em>. The definitions are not equivalent &mdash; and the consultancies never flag this when headlining their numbers.
+  </div>
+
+  <div class="bar-chart reveal">
+    <div class="bar-group-label consultancy">What Consultancies Claim</div>
+
+    <div class="bar-row">
+      <div class="bar-label">At least one major AI initiative<span class="bar-sublabel">Deloitte UK State of AI, 2023</span></div>
+      <div class="bar-track"><div class="bar-fill" data-width="96" style="background:linear-gradient(90deg,rgba(239,68,68,0.85),rgba(239,68,68,0.45))"></div></div>
+      <div class="bar-value" style="color:var(--red)">96%</div>
+    </div>
+
+    <div class="bar-row">
+      <div class="bar-label">Regular AI use<span class="bar-sublabel">McKinsey 2025 Survey</span></div>
+      <div class="bar-track"><div class="bar-fill" data-width="88" style="background:linear-gradient(90deg,rgba(239,68,68,0.8),rgba(239,68,68,0.4))"></div></div>
+      <div class="bar-value" style="color:var(--red)">88%</div>
+    </div>
+
+    <div class="bar-row">
+      <div class="bar-label">Any AI use in a function<span class="bar-sublabel">McKinsey / AI Index 2024</span></div>
+      <div class="bar-track"><div class="bar-fill" data-width="78" style="background:linear-gradient(90deg,rgba(239,68,68,0.7),rgba(239,68,68,0.3))"></div></div>
+      <div class="bar-value" style="color:var(--red)">78%</div>
+    </div>
+
+    <div class="bar-row">
+      <div class="bar-label">Regular GenAI use<span class="bar-sublabel">McKinsey 2024 Survey</span></div>
+      <div class="bar-track"><div class="bar-fill" data-width="65" style="background:linear-gradient(90deg,rgba(239,68,68,0.6),rgba(239,68,68,0.25))"></div></div>
+      <div class="bar-value" style="color:var(--red)">65%</div>
+    </div>
+
+    <div class="bar-divider"></div>
+    <div class="bar-group-label independent">What Independent Data Shows <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:0.6rem;color:var(--text-muted)">&mdash; Gartner is itself an advisory firm; OECD figures are government-collected statistics</span></div>
+
+    <div class="bar-row">
+      <div class="bar-label">GenAI deployed &amp; in use<span class="bar-sublabel">Gartner Q4 2023</span></div>
+      <div class="bar-track"><div class="bar-fill" data-width="29" style="background:linear-gradient(90deg,rgba(6,182,212,0.8),rgba(6,182,212,0.4))"></div></div>
+      <div class="bar-value" style="color:var(--teal)">29%</div>
+    </div>
+
+    <div class="bar-row">
+      <div class="bar-label">Firms using AI (10+ employees)<span class="bar-sublabel">OECD 2025</span></div>
+      <div class="bar-track"><div class="bar-fill" data-width="20" style="background:linear-gradient(90deg,rgba(6,182,212,0.7),rgba(6,182,212,0.3))"></div></div>
+      <div class="bar-value" style="color:var(--teal)">20%</div>
+    </div>
+
+    <div class="bar-row">
+      <div class="bar-label">AI-mature organisations<span class="bar-sublabel">Gartner 2024</span></div>
+      <div class="bar-track"><div class="bar-fill" data-width="9" style="background:linear-gradient(90deg,rgba(139,92,246,0.8),rgba(139,92,246,0.4))"></div></div>
+      <div class="bar-value" style="color:var(--purple)">9%</div>
+    </div>
+
+    <div class="bar-row">
+      <div class="bar-label">AI in core business functions (G7)<span class="bar-sublabel">OECD 2024</span></div>
+      <div class="bar-track"><div class="bar-fill" data-width="6" style="background:linear-gradient(90deg,rgba(139,92,246,0.7),rgba(139,92,246,0.3))"></div></div>
+      <div class="bar-value" style="color:var(--purple)">&lt;10%</div>
+    </div>
+  </div>
+
+  <div class="insight-box reveal" style="margin:2.5rem 0; background:rgba(239,68,68,0.06); border-color:rgba(239,68,68,0.18); color:var(--text-secondary); font-size:0.88rem; padding:1.25rem 1.5rem;">
+    <strong style="color:var(--red);">The circular citation:</strong> The &ldquo;78% adoption&rdquo; headline that appeared in Stanford&rsquo;s AI Index Report &mdash; widely cited as independent validation &mdash; came directly from McKinsey&rsquo;s own survey, included in the Index as a contributing data source. Consultancy data was laundered through an independent report, then cited back as third-party evidence. When you strip out consultancy-sourced data, no independent body places broad AI adoption above 30%.
+  </div>
+
+  <div class="big-stat-row stagger-children">
+    <div class="big-stat reveal">
+      <div class="num" style="color:var(--red-soft)">88%</div>
+      <div class="desc">of executives claim &ldquo;regular AI use&rdquo; in consultancy surveys</div>
+      <div class="src">McKinsey 2025</div>
+    </div>
+    <div class="big-stat reveal">
+      <div class="num" style="color:var(--teal-soft)">&lt;10%</div>
+      <div class="desc">actually use AI in core business functions across the G7</div>
+      <div class="src">OECD 2024</div>
+    </div>
+    <div class="big-stat reveal">
+      <div class="num" style="color:var(--purple)">48%</div>
+      <div class="desc">of AI projects even make it into production</div>
+      <div class="src">Gartner 2024</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SECTION 3: THE ROI REALITY CHECK
+     ══════════════════════════════════════ -->
+<section id="roi">
+  <div class="reveal">
+    <div class="section-label">Section 3</div>
+    <h2 class="section-title">The ROI Reality Check</h2>
+    <p class="section-subtitle">Consultancies headline trillions in potential value. The independent evidence tells a story of modest gains, abandoned projects, and a yawning gap between what makes the press release and what shows up in financial statements.</p>
+  </div>
+
+  <div class="highlight-stat reveal-scale">
+    <div class="num" style="color:var(--red)">80%+</div>
+    <div class="desc">of respondents say there is <strong style="color:var(--text)">no tangible impact on enterprise-level EBIT</strong> from generative AI</div>
+    <div class="src">McKinsey&rsquo;s own survey &middot; March 2025 &mdash; <em style="color:var(--text-secondary)">This is not an outside critic. This is the firm that estimated &ldquo;$4.4 trillion&rdquo; in AI value, surveying its own audience.</em></div>
+  </div>
+
+  <div class="promise-vs-reality">
+    <div class="promise-card reveal-left">
+      <div class="pvr-label">What Makes the Headline</div>
+      <div class="pvr-item">
+        <div class="pvr-num">$4.4T</div>
+        <div class="pvr-desc">&ldquo;Could add&rdquo; annual value from generative AI across 63 use cases &mdash; a theoretical ceiling, not a forecast</div>
+        <div class="pvr-src">McKinsey Global Institute, June 2023</div>
+      </div>
+      <div class="pvr-item">
+        <div class="pvr-num">3x</div>
+        <div class="pvr-desc">Higher revenue-per-worker growth in AI-using industries</div>
+        <div class="pvr-src">PwC Jobs Barometer, 2025</div>
+      </div>
+      <div class="pvr-item">
+        <div class="pvr-num">&ldquo;Game-changer&rdquo;</div>
+        <div class="pvr-desc">AI described as a game-changer for finance</div>
+        <div class="pvr-src">KPMG International, 2024</div>
+      </div>
+    </div>
+    <div class="reality-card reveal-right">
+      <div class="pvr-label">What the Data Shows</div>
+      <div class="pvr-item">
+        <div class="pvr-num">&lt;10%</div>
+        <div class="pvr-desc">Most commonly reported cost savings from AI deployments</div>
+        <div class="pvr-src">Stanford AI Index / McKinsey data, 2024</div>
+      </div>
+      <div class="pvr-item">
+        <div class="pvr-num">&lt;5%</div>
+        <div class="pvr-desc">Most commonly reported revenue increase from AI</div>
+        <div class="pvr-src">Stanford AI Index, 2025</div>
+      </div>
+      <div class="pvr-item">
+        <div class="pvr-num">12%</div>
+        <div class="pvr-desc">of CEOs say AI delivered both cost and revenue benefits</div>
+        <div class="pvr-src">PwC Global CEO Survey, Jan 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="big-stat-row stagger-children">
+    <div class="big-stat reveal">
+      <div class="num" style="color:var(--red)">30%</div>
+      <div class="desc">of GenAI projects <em>predicted</em> to be abandoned after proof-of-concept by end of 2025</div>
+      <div class="src">Gartner forecast, July 2024</div>
+    </div>
+    <div class="big-stat reveal">
+      <div class="num" style="color:var(--gold)">1%</div>
+      <div class="desc">of leaders call their organisation &ldquo;mature&rdquo; in AI deployment</div>
+      <div class="src">McKinsey, 2025</div>
+    </div>
+    <div class="big-stat reveal">
+      <div class="num" style="color:var(--teal)">85% <span style="font-size:0.5em;color:var(--text-muted)">vs</span> 5%</div>
+      <div class="desc">plan to explore conversational GenAI vs. actually have it deployed</div>
+      <div class="src">Gartner, Dec 2024</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SECTION 4: FIVE FIRMS, ONE PLAYBOOK
+     ══════════════════════════════════════ -->
+<section id="firms">
+  <div class="reveal">
+    <div class="section-label">Section 4</div>
+    <h2 class="section-title">Five Firms, One Playbook</h2>
+    <p class="section-subtitle">Each consultancy follows the same pattern: publish alarming forecasts and reassuring counter-narratives in parallel. The common thread is not the message &mdash; it&rsquo;s the outcome: <strong style="color:var(--gold)">every position generates a billable engagement.</strong> Tap each firm to see their sharpest contradictions.</p>
+  </div>
+
+  <div class="insight-box reveal" style="margin-bottom:2rem; background:rgba(245,158,11,0.06); border-color:rgba(245,158,11,0.15); color:var(--text-secondary); font-size:0.85rem; line-height:1.7; text-align:center;">
+    <strong style="color:var(--gold);">The pattern that repeats across all five firms:</strong><br>
+    Alarming forecast &rarr; sells transformation engagements &nbsp;&nbsp;|&nbsp;&nbsp; Reassuring counter-narrative &rarr; sells augmentation &amp; change management &nbsp;&nbsp;|&nbsp;&nbsp; Both &rarr; sell governance &amp; risk consulting
+  </div>
+
+  <div class="firm-cards stagger-children">
+
+    <!-- McKinsey -->
+    <div class="firm-card reveal" data-firm="mckinsey">
+      <div class="firm-card-header" onclick="toggleFirm(this)">
+        <div>
+          <div class="firm-name">McKinsey &amp; Company</div>
+          <div class="firm-oneliner">&ldquo;Deriving business value&rdquo; meets &ldquo;no tangible EBIT impact&rdquo;</div>
+        </div>
+        <div class="firm-toggle">+</div>
+      </div>
+      <div class="firm-card-body">
+        <div class="firm-card-inner">
+          <div class="firm-contradiction">
+            <div class="firm-quote-card panic">
+              <div class="fq-tag">2024 Headline</div>
+              <div class="fq-text">&ldquo;Organisations are using &mdash; and deriving business value &mdash; from gen AI, reporting material benefits including cost decreases and revenue increases.&rdquo;</div>
+              <div class="fq-src">McKinsey State of AI, Early 2024</div>
+            </div>
+            <div class="firm-quote-card calm">
+              <div class="fq-tag">2025 Reality</div>
+              <div class="fq-text">&ldquo;More than 80% of respondents say there is no tangible impact on enterprise-level EBIT from gen AI.&rdquo;</div>
+              <div class="fq-src">McKinsey Survey, March 2025</div>
+            </div>
+          </div>
+          <div class="firm-contradiction">
+            <div class="firm-quote-card panic">
+              <div class="fq-tag">Adoption Claim</div>
+              <div class="fq-text">&ldquo;65% of organisations regularly using gen AI.&rdquo;</div>
+              <div class="fq-src">McKinsey, Early 2024</div>
+            </div>
+            <div class="firm-quote-card calm">
+              <div class="fq-tag">Same Year</div>
+              <div class="fq-text">&ldquo;Only 11% of companies worldwide are using gen AI at scale.&rdquo;</div>
+              <div class="fq-src">McKinsey Operations, 2024</div>
+            </div>
+          </div>
+          <div class="firm-takeaway"><strong>Our analysis identifies a recurring pattern:</strong> McKinsey switches between four lenses &mdash; adoption signals (high), scale/maturity (low), value potential (enormous), and realised financial impact (negligible) &mdash; often without flagging the switch. Each lens supports a different type of engagement.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deloitte -->
+    <div class="firm-card reveal" data-firm="deloitte">
+      <div class="firm-card-header" onclick="toggleFirm(this)">
+        <div>
+          <div class="firm-name">Deloitte</div>
+          <div class="firm-oneliner">&ldquo;Akin to electricity&rdquo; meets &ldquo;still crawling or walking&rdquo;</div>
+        </div>
+        <div class="firm-toggle">+</div>
+      </div>
+      <div class="firm-card-body">
+        <div class="firm-card-inner">
+          <div class="firm-contradiction">
+            <div class="firm-quote-card panic">
+              <div class="fq-tag">Tech Trends 2026</div>
+              <div class="fq-text">&ldquo;AI has become akin to electricity. No corner of enterprise technology is untouched.&rdquo;</div>
+              <div class="fq-src">Deloitte Tech Trends 2026</div>
+            </div>
+            <div class="firm-quote-card calm">
+              <div class="fq-tag">12 Months Prior</div>
+              <div class="fq-text">&ldquo;On an enterprise time scale, AI advancements are still in a nascent phase &mdash; crawling or walking.&rdquo;</div>
+              <div class="fq-src">Deloitte Tech Trends 2025, Dec 2024</div>
+            </div>
+          </div>
+          <div class="firm-contradiction">
+            <div class="firm-quote-card panic">
+              <div class="fq-tag">Broad Adoption</div>
+              <div class="fq-text">&ldquo;96% had at least one major process or initiative using AI.&rdquo;</div>
+              <div class="fq-src">Deloitte UK State of AI, Feb 2023</div>
+            </div>
+            <div class="firm-quote-card calm">
+              <div class="fq-tag">Pilot Purgatory</div>
+              <div class="fq-text">&ldquo;Only 25% of organisations had moved 40% or more of AI experiments into production.&rdquo;</div>
+              <div class="fq-src">Deloitte State of AI, 2026</div>
+            </div>
+          </div>
+          <div class="firm-takeaway"><strong>The speed paradox:</strong> Across its publications, Deloitte tells clients to &ldquo;execute rapidly&rdquo; while also warning there is a &ldquo;speed limit.&rdquo; Meanwhile, Deloitte&rsquo;s own data shows 84% of companies have not redesigned jobs around AI (State of AI, 2026). Each message opens a different consulting door.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EY -->
+    <div class="firm-card reveal" data-firm="ey">
+      <div class="firm-card-header" onclick="toggleFirm(this)">
+        <div>
+          <div class="firm-name">EY (Ernst &amp; Young)</div>
+          <div class="firm-oneliner">&ldquo;Democratising AI&rdquo; meets &ldquo;AI has concentrated progress&rdquo;</div>
+        </div>
+        <div class="firm-toggle">+</div>
+      </div>
+      <div class="firm-card-body">
+        <div class="firm-card-inner">
+          <div class="firm-contradiction">
+            <div class="firm-quote-card panic">
+              <div class="fq-tag">2023</div>
+              <div class="fq-text">&ldquo;GenAI is democratizing the ability to use AI to create content and novel insights.&rdquo;</div>
+              <div class="fq-src">EY Global, 2023</div>
+            </div>
+            <div class="firm-quote-card calm">
+              <div class="fq-tag">2025 Reversal</div>
+              <div class="fq-text">&ldquo;AI has not democratized progress. It has concentrated it. Only a handful of mega corporations control the benefits. For most, AI simply does not work.&rdquo;</div>
+              <div class="fq-src">EY China, 2025</div>
+            </div>
+          </div>
+          <div class="firm-contradiction">
+            <div class="firm-quote-card panic">
+              <div class="fq-tag">Augmentation</div>
+              <div class="fq-text">&ldquo;Augmentation will deliver superior results to automation in almost every case.&rdquo;</div>
+              <div class="fq-src">EY Ireland, 2023</div>
+            </div>
+            <div class="firm-quote-card calm">
+              <div class="fq-tag">Same Year</div>
+              <div class="fq-text">&ldquo;Hyper-automation programs. Unattended, AI-infused automation &mdash; at scale.&rdquo;</div>
+              <div class="fq-src">EY Global, 2023</div>
+            </div>
+          </div>
+          <div class="firm-takeaway"><strong>The strongest reversal in our dataset:</strong> This is not a gradual shift &mdash; it is a direct inversion from &ldquo;democratiser&rdquo; to &ldquo;concentrator.&rdquo; Different parts of EY&rsquo;s publishing ecosystem appear unaligned on the most fundamental question about AI&rsquo;s distributional impact.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KPMG -->
+    <div class="firm-card reveal" data-firm="kpmg">
+      <div class="firm-card-header" onclick="toggleFirm(this)">
+        <div>
+          <div class="firm-name">KPMG</div>
+          <div class="firm-oneliner">&ldquo;AI won&rsquo;t replace humans&rdquo; meets &ldquo;AI can fully automate what humans do&rdquo;</div>
+        </div>
+        <div class="firm-toggle">+</div>
+      </div>
+      <div class="firm-card-body">
+        <div class="firm-card-inner">
+          <div class="firm-contradiction">
+            <div class="firm-quote-card panic">
+              <div class="fq-tag">Automation Push</div>
+              <div class="fq-text">&ldquo;Agentic AI can fully automate what humans do by taking actions on their behalf.&rdquo;</div>
+              <div class="fq-src">KPMG US, 2025</div>
+            </div>
+            <div class="firm-quote-card calm">
+              <div class="fq-tag">Governance Push</div>
+              <div class="fq-text">&ldquo;AI cannot yet replace human oversight in high-stakes agreements. A human-in-the-loop approach is essential.&rdquo;</div>
+              <div class="fq-src">KPMG US CLM Paper, 2025</div>
+            </div>
+          </div>
+          <div class="firm-contradiction">
+            <div class="firm-quote-card panic">
+              <div class="fq-tag">Game-Changer</div>
+              <div class="fq-text">&ldquo;AI is a game-changer for finance. 71% of companies already using AI in financial reporting.&rdquo;</div>
+              <div class="fq-src">KPMG International, April 2024</div>
+            </div>
+            <div class="firm-quote-card calm">
+              <div class="fq-tag">Hard Truths</div>
+              <div class="fq-text">&ldquo;Most organisations are nowhere near capturing AI&rsquo;s full potential. Licenses without logic, pilots without purpose.&rdquo;</div>
+              <div class="fq-src">KPMG &ldquo;Hype to Hard Truths&rdquo; report</div>
+            </div>
+          </div>
+          <div class="firm-takeaway"><strong>Three unresolved frames emerge from our review:</strong> KPMG runs a values-and-trust frame (human-centric), a transformation frame (game-changer, ROI), and a realism frame (nowhere near value) in parallel across its publications. No single &ldquo;KPMG position&rdquo; on AI remains stable across documents.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PwC -->
+    <div class="firm-card reveal" data-firm="pwc">
+      <div class="firm-card-header" onclick="toggleFirm(this)">
+        <div>
+          <div class="firm-name">PwC</div>
+          <div class="firm-oneliner">&ldquo;AI replacing jobs is a myth&rdquo; meets &ldquo;some jobs may no longer exist&rdquo;</div>
+        </div>
+        <div class="firm-toggle">+</div>
+      </div>
+      <div class="firm-card-body">
+        <div class="firm-card-inner">
+          <div class="firm-contradiction">
+            <div class="firm-quote-card panic">
+              <div class="fq-tag">2023 Myth-Busting</div>
+              <div class="fq-text">&ldquo;Generative AI will replace employees &mdash; that&rsquo;s a myth. AI can make your people vastly more productive.&rdquo;</div>
+              <div class="fq-src">PwC &ldquo;Six GenAI Business Myths,&rdquo; 2023</div>
+            </div>
+            <div class="firm-quote-card calm">
+              <div class="fq-tag">2025 Admission</div>
+              <div class="fq-text">&ldquo;Some jobs &mdash; such as data entry clerk or software coder &mdash; may no longer exist in their previous forms.&rdquo;</div>
+              <div class="fq-src">PwC Global AI Jobs Barometer, 2025</div>
+            </div>
+          </div>
+          <div class="firm-contradiction">
+            <div class="firm-quote-card panic">
+              <div class="fq-tag">Revolution</div>
+              <div class="fq-text">&ldquo;AI has reached a tipping point. Generative AI is so powerful it&rsquo;s poised to change business models and revolutionize work.&rdquo;</div>
+              <div class="fq-src">PwC, March 2023</div>
+            </div>
+            <div class="firm-quote-card calm">
+              <div class="fq-tag">Reality</div>
+              <div class="fq-text">&ldquo;Only a few companies are realizing extraordinary value from AI today. Most see modest efficiency gains that don&rsquo;t add up to transformation.&rdquo;</div>
+              <div class="fq-src">PwC AI Predictions, 2026</div>
+            </div>
+          </div>
+          <div class="firm-takeaway"><strong>The myth becomes reality:</strong> PwC called job replacement a &ldquo;myth&rdquo; in 2023, then named specific vanishing roles by 2025. 56% of CEOs in PwC&rsquo;s own 2026 Global CEO Survey report no significant financial gain from AI. <em style="color:var(--text-muted);font-size:0.78rem">(Note: PwC had the fewest public AI publications in our dataset &mdash; 6 sources vs 14&ndash;47 for other firms &mdash; which may reflect tighter editorial control rather than fewer contradictions.)</em></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SECTION 5: FOLLOW THE MONEY
+     ══════════════════════════════════════ -->
+<section id="money">
+  <div class="reveal">
+    <div class="section-label">Section 5</div>
+    <h2 class="section-title">Follow the Money</h2>
+    <p class="section-subtitle">Every contradictory narrative documented above feeds revenue on both sides. Here is the scale of what that business model produces.</p>
+  </div>
+
+  <div class="insight-box reveal" style="margin-bottom:2rem; background:rgba(245,158,11,0.06); border-color:rgba(245,158,11,0.15); color:var(--text-secondary); font-size:0.8rem;">
+    <strong style="color:var(--gold);">A note on comparability:</strong> The five firms below disclose different metrics &mdash; some report revenue, some report growth rates on undisclosed bases, some report investment rather than revenue. We label each metric type clearly. The numbers are not directly comparable, but the pattern is consistent: every firm is scaling AI practices aggressively while telling clients the technology hasn&rsquo;t delivered yet.
+  </div>
+
+  <div class="revenue-cards stagger-children">
+    <div class="revenue-card reveal">
+      <div class="rc-firm">Deloitte</div>
+      <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:0.5rem;">Metric: Reported Revenue</div>
+      <div class="rc-num">$2.2B</div>
+      <div class="rc-detail">AI revenue, growing <strong style="color:var(--gold)">+39% YoY</strong></div>
+      <div class="rc-sub">$3B+ committed in GenAI investments through FY2030. Enterprise Claude deployment to all 470,000+ staff. 15,000 professionals certified on AI tools. GenAI survey released at Davos for maximum visibility.</div>
+    </div>
+    <div class="revenue-card reveal">
+      <div class="rc-firm">EY</div>
+      <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;">Metric: Growth Rate (base undisclosed)</div>
+      <div class="rc-num">+30%</div>
+      <div class="rc-detail">AI-related revenue growth YoY</div>
+      <div class="rc-sub">$1.4B invested to launch EY.ai platform. 15,000+ people on AI-led projects. 100,000+ AI credentials awarded. 1,000 AI agents built. Platform launched with the tagline: &ldquo;AI&rsquo;s moment is now.&rdquo;</div>
+    </div>
+    <div class="revenue-card reveal">
+      <div class="rc-firm">McKinsey</div>
+      <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:0.5rem;">Metric: Not Disclosed</div>
+      <div class="rc-num">???</div>
+      <div class="rc-detail">AI revenue withheld</div>
+      <div class="rc-sub">QuantumBlack grew from 45 people to 40+ offices. Published &ldquo;$4.4 trillion&rdquo; AI opportunity estimate. Simultaneously cut ~10% of staff, including data and software engineering specialists. Revenue figures withheld.</div>
+    </div>
+    <div class="revenue-card reveal">
+      <div class="rc-firm">KPMG</div>
+      <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;">Metric: Growth Rate (base undisclosed, multi-year)</div>
+      <div class="rc-num">+220%</div>
+      <div class="rc-detail">AI revenue growth over multiple years</div>
+      <div class="rc-sub">$2B Microsoft partnership (5-yr) projecting $12B in revenue. $100M Google Cloud deal projecting $1B growth. 80,000+ employees AI-trained. 50 live AI agents on KPMG Workbench, ~1,000 in development. First Big Four with ISO 42001 globally.</div>
+    </div>
+    <div class="revenue-card reveal">
+      <div class="rc-firm">PwC</div>
+      <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--purple);margin-bottom:0.5rem;">Metric: Investment (not revenue)</div>
+      <div class="rc-num">$1.5B</div>
+      <div class="rc-detail">Annual global AI investment <span style="color:var(--text-muted)">(AI revenue undisclosed)</span></div>
+      <div class="rc-sub">$1B initial US AI investment (2023). OpenAI&rsquo;s first reseller and largest enterprise customer: 100,000+ ChatGPT Enterprise licenses. 250+ AI agents built. $400M Google Cloud AI security deal. Advisory segment grew 4.5% to $24.3B &mdash; growth explicitly attributed to AI demand.</div>
+    </div>
+  </div>
+
+  <div class="highlight-stat reveal-scale" style="margin-bottom:3rem">
+    <div class="num" style="color:var(--gold)">5 for 5</div>
+    <div class="desc">Every firm is scaling AI practices aggressively &mdash; <strong style="color:var(--text)">while their own publications say the technology hasn&rsquo;t delivered for clients yet</strong></div>
+    <div class="src">Deloitte: $2.2B revenue, +39% YoY &middot; KPMG: +220% growth &middot; EY: +30% growth &middot; PwC: $1.5B/yr invested &middot; McKinsey: undisclosed<br><em style="color:var(--text-muted)">These figures mix revenue, growth rates, and investment &mdash; they cannot be summed. What they share is direction: every arrow points up.</em></div>
+  </div>
+
+  <div class="flywheel reveal">
+    <div class="flywheel-title">The Hype-to-Revenue Flywheel</div>
+    <p style="text-align:center; font-size:0.78rem; color:var(--text-muted); margin-bottom:1.5rem; max-width:550px; margin-left:auto; margin-right:auto; line-height:1.6;">Whether by design or by the natural incentives of the consulting business model, the same pattern repeats across all five firms:</p>
+    <div class="flywheel-steps">
+      <div class="flywheel-step">
+        <div class="flywheel-num">1</div>
+        <div class="flywheel-text"><strong>Publish bold thought leadership.</strong> &ldquo;$4.4 trillion opportunity.&rdquo; &ldquo;AI could automate 60-70% of work.&rdquo; &ldquo;Tipping point reached.&rdquo; Headlines that generate media coverage and board-level attention.</div>
+      </div>
+      <div class="flywheel-step">
+        <div class="flywheel-num">2</div>
+        <div class="flywheel-text"><strong>Urgency builds in the C-suite.</strong> CEOs and boards read the headlines. Fear of missing out. Fear of disruption. Fear of being left behind. &ldquo;We need to act now.&rdquo;</div>
+      </div>
+      <div class="flywheel-step">
+        <div class="flywheel-num">3</div>
+        <div class="flywheel-text"><strong>Named AI practices are ready.</strong> Deloitte GenAI Practice. EY.ai. QuantumBlack. KPMG Workbench. PwC agent OS. All five firms &mdash; branded, staffed, ready for sales conversations.</div>
+      </div>
+      <div class="flywheel-step">
+        <div class="flywheel-num">4</div>
+        <div class="flywheel-text"><strong>Transformation engagements follow.</strong> Strategy workshops. Readiness assessments. AI roadmaps. Pilot programmes. Each one feeds the next.</div>
+      </div>
+      <div class="flywheel-step">
+        <div class="flywheel-num">5</div>
+        <div class="flywheel-text"><strong>When pilots stall, &ldquo;reset&rdquo; narratives emerge.</strong> &ldquo;Value is harder than expected.&rdquo; &ldquo;Deeper organisational surgery needed.&rdquo; The revised narrative supports the <em>next</em> round of consulting.</div>
+      </div>
+      <div class="flywheel-step">
+        <div class="flywheel-num">6</div>
+        <div class="flywheel-text"><strong>The cycle repeats.</strong> New surveys show progress is slow. Recommend scaling. Recommend governance. Recommend reskilling. Each phase generates demand for the next.</div>
+      </div>
+    </div>
+    <div class="flywheel-loop">&#8635; &ensp; The structural incentives sustain this cycle regardless of intent &ensp; &#8635;</div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SECTION 6: THE INDEPENDENT RECORD
+     ══════════════════════════════════════ -->
+<section id="evidence">
+  <div class="reveal">
+    <div class="section-label">Section 6</div>
+    <h2 class="section-title">The Independent Record</h2>
+    <p class="section-subtitle">Four independent sources &mdash; none funded by consultancies &mdash; provide the ground truth. Here is what they found.</p>
+  </div>
+
+  <div class="evidence-grid stagger-children">
+    <div class="evidence-card reveal">
+      <div class="ec-source">OECD &middot; Official Statistics 2025</div>
+      <div class="ec-stat">20.2%</div>
+      <div class="ec-finding">of firms with 10+ employees used AI in 2025 &mdash; up from <strong>8.7%</strong> in 2023. Growth is real, but from a low base.</div>
+      <div class="ec-finding"><strong>52%</strong> of large firms use AI vs <strong>17.4%</strong> of small firms. AI adoption has a massive size gradient.</div>
+      <div class="ec-finding">In G7 countries, AI use in <strong>core business functions</strong> producing goods and services was <strong>below 10%</strong> (range: 1.9% Japan to 6.1% US).</div>
+    </div>
+
+    <div class="evidence-card reveal">
+      <div class="ec-source">Stanford HAI &middot; AI Index 2025</div>
+      <div class="ec-stat">&lt;10%</div>
+      <div class="ec-finding">Most commonly reported AI cost savings. Revenue increases most commonly <strong>below 5%</strong>. Gains cluster at modest levels.</div>
+      <div class="ec-finding">The &ldquo;78% adoption&rdquo; headline figure comes from <strong>McKinsey&rsquo;s own survey</strong> included in the AI Index &mdash; not from independent measurement.</div>
+      <div class="ec-finding">Even where value is claimed, reported gains are <strong>consistent with early-stage diffusion</strong> where deployments are incremental.</div>
+    </div>
+
+    <div class="evidence-card reveal">
+      <div class="ec-source">Gartner &middot; Multiple Surveys 2024</div>
+      <div class="ec-stat">49%</div>
+      <div class="ec-finding">of organisations cite <strong>difficulty estimating and demonstrating business value</strong> as the top barrier to AI adoption.</div>
+      <div class="ec-finding">Only <strong>9%</strong> classified as AI-mature. Only <strong>48%</strong> of AI projects reach production. Average prototype-to-production: <strong>8 months</strong>.</div>
+      <div class="ec-finding">Gartner predicts <strong>30% of GenAI projects</strong> will be abandoned after proof-of-concept by end of 2025. Deployment costs: <strong>$5M&ndash;$20M</strong>.</div>
+    </div>
+
+    <div class="evidence-card reveal">
+      <div class="ec-source">Public Earnings Transcripts &middot; 2024&ndash;2026</div>
+      <div class="ec-stat">Concentrated</div>
+      <div class="ec-finding">Concrete, numeric ROI claims appear mostly in <strong>adtech and vertical SaaS</strong>: DoubleVerify reports $4 return per $1 invested; Toast cites 20x return on AI-enabled ads.</div>
+      <div class="ec-finding">Hyperscalers (Microsoft, Alphabet) justify AI via <strong>aggregate demand and capex narratives</strong>, not unit-economics ROI.</div>
+      <div class="ec-finding">Meta distinguishes between <strong>mature AI returns</strong> in core ads business and <strong>earlier-stage GenAI</strong> not expected to drive revenue near-term &mdash; a distinction consultancies rarely make.</div>
+      <div class="ec-finding" style="margin-top:0.75rem; padding-top:0.75rem; border-top:1px solid var(--border);"><strong style="color:var(--teal);">The punchline:</strong> If AI were delivering the transformative ROI that consultancies headline, CEOs would be boasting about it to shareholders every quarter. They are not. The silence in earnings calls is the strongest evidence that the trillions remain theoretical.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SECTION 7: WHAT THIS MEANS
+     ══════════════════════════════════════ -->
+<section id="implications">
+  <div class="reveal">
+    <div class="section-label" style="background:rgba(239,68,68,0.1); color:var(--red);">Section 7</div>
+    <h2 class="section-title">What This Means</h2>
+    <p class="section-subtitle">Documenting contradictions is not the point. Understanding what they cost &mdash; and what to do about it &mdash; is.</p>
+  </div>
+
+  <div class="promise-vs-reality" style="margin:2rem 0;">
+    <div class="promise-card reveal-left" style="background:linear-gradient(135deg, rgba(245,158,11,0.06), var(--bg-surface)); border-color:rgba(245,158,11,0.15);">
+      <div class="pvr-label" style="color:var(--gold);">For Boards &amp; C-Suites</div>
+      <div class="pvr-item">
+        <div class="pvr-desc" style="font-size:0.88rem; color:var(--text-secondary); line-height:1.7;">
+          <strong style="color:var(--text);">Ask your consultancy for a single, internally consistent position on AI.</strong> If they cannot reconcile what their thought leadership says with what their project teams deliver, that is a red flag &mdash; not about AI, but about the advice you are paying for.<br><br>
+          <strong style="color:var(--text);">Demand independent benchmarks.</strong> When your consultancy cites &ldquo;78% adoption,&rdquo; ask: whose survey, what sample, what definition of adoption? Cross-reference against OECD and Gartner data before committing eight-figure transformation budgets.<br><br>
+          <strong style="color:var(--text);">Separate the signal from the sales cycle.</strong> AI is a real technology with real applications. But the gap between consultancy headlines and independent evidence suggests the urgency is overstated. Match your investment pace to observed ROI, not to forecasted trillion-dollar ceilings.
+        </div>
+      </div>
+    </div>
+    <div class="reality-card reveal-right" style="background:linear-gradient(135deg, var(--bg-surface), rgba(139,92,246,0.06)); border-color:rgba(139,92,246,0.15);">
+      <div class="pvr-label" style="color:var(--purple);">For Policymakers &amp; Regulators</div>
+      <div class="pvr-item">
+        <div class="pvr-desc" style="font-size:0.88rem; color:var(--text-secondary); line-height:1.7;">
+          <strong style="color:var(--text);">Consultancy adoption figures shape policy.</strong> When governments hear &ldquo;88% of firms use AI,&rdquo; they legislate for an AI-saturated economy. When the OECD says 20%, the policy response should be different. AI strategy, workforce programmes, and regulatory frameworks built on inflated baselines will misallocate resources.<br><br>
+          <strong style="color:var(--text);">Require source transparency.</strong> When consultancy surveys are cited in policy documents, require disclosure of sample composition, survey methodology, and the definition of &ldquo;adoption&rdquo; being used. The Stanford AI Index circular citation shows how easily consultancy data enters the policy bloodstream as &ldquo;independent&rdquo; evidence.<br><br>
+          <strong style="color:var(--text);">Commission independent measurement.</strong> Government statistical agencies &mdash; not firms with a commercial stake in the outcome &mdash; should be the primary source for AI adoption data used in policymaking.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight-box reveal" style="margin:2rem 0; background:rgba(6,182,212,0.06); border-color:rgba(6,182,212,0.15); color:var(--text-secondary); font-size:0.85rem; line-height:1.7;">
+    <strong style="color:var(--teal);">A necessary caveat:</strong> None of this means AI is without value, or that consultancies deliver no useful work. Firms may publish contradictory thought leadership while still executing competent implementations for clients. The problem is not the technology &mdash; it is that the public narrative around the technology is shaped by organisations with a structural incentive to overstate both the urgency and the difficulty, because both generate revenue. Readers deserve to know that when they read the next &ldquo;AI will transform everything&rdquo; report from a firm that earns billions from AI transformation projects.
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+     ══════════════════════════════════════ -->
+<footer>
+  <div class="ft-title reveal">Methodology &amp; Sources</div>
+  <div class="ft-text reveal">
+    This investigation is based on original analysis of 100+ publications from McKinsey, Deloitte, EY, KPMG, and PwC (2022&ndash;2026), cross-referenced against independent data from OECD official statistics, the Stanford HAI AI Index Report, Gartner surveys, and public company earnings transcripts. All claims are directly sourced. The full research corpus includes 47 McKinsey sources, 36 Deloitte sources, 26 EY sources, 14 KPMG sources, 6 PwC sources, and 16 independent data sources.
+  </div>
+  <div class="ft-text reveal" style="margin-top:1rem; color:var(--text-secondary);">
+    <strong style="color:var(--text)">A note on fairness:</strong> Consultancies are large, decentralised organisations. Different service lines, geographies, and publication teams may legitimately hold different views. Some contradictions are temporal (the evidence evolved) and some are definitional (different metrics). We acknowledge this throughout the analysis. But when every contradiction &mdash; temporal or otherwise &mdash; opens a new revenue stream, and when the same pattern repeats across all five firms independently, organisational complexity becomes less an explanation and more a feature of a business model where consistency has no commercial upside.
+  </div>
+  <div class="ft-text reveal" style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid var(--border);">
+    <strong style="color:var(--text)">Research documents</strong> <span style="color:var(--text-muted)">&mdash; download the full source analysis (123+ sources across 7 documents):</span><br>
+    <span style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.75rem;">
+      <a class="doc-download" href="McKinsey%E2%80%99s%20post%E2%80%912021%20AI%20narrative_%20where%20the%20firm%20appears%20to%20contradict%20itself%20over%20time.docx" download="McKinsey AI Narrative Contradictions.docx" style="font-size:0.68rem; padding:0.35rem 0.7rem;">McKinsey (47 sources)</a>
+      <a class="doc-download" href="Deloitte%E2%80%99s%20post-2021%20AI%20thought%20leadership_%20where%20the%20narrative%20contradicts%20itself%20over%20time.docx" download="Deloitte AI Narrative Contradictions.docx" style="font-size:0.68rem; padding:0.35rem 0.7rem;">Deloitte (36)</a>
+      <a class="doc-download" href="Contradictions%20in%20EY%E2%80%99s%20Artificial%20Intelligence%20Messaging%20Since%202022.docx" download="EY AI Messaging Contradictions.docx" style="font-size:0.68rem; padding:0.35rem 0.7rem;">EY (26)</a>
+      <a class="doc-download" href="Contradictions%20in%20KPMG%E2%80%99s%20AI%20narrative%20in%20the%20years%20following%20the%20pandemic.docx" download="KPMG AI Narrative Contradictions.docx" style="font-size:0.68rem; padding:0.35rem 0.7rem;">KPMG (14)</a>
+      <a class="doc-download" href="PwC%E2%80%99s%20evolving%20AI%20messaging%20%E2%80%93%20key%20contradictions.docx" download="PwC AI Messaging Contradictions.docx" style="font-size:0.68rem; padding:0.35rem 0.7rem;">PwC (6)</a>
+      <a class="doc-download" href="AI%20consulting%20revenues%20at%20McKinsey%2C%20Deloitte%20and%20EY%2C%20and%20how%20they%20scale%20practices%20alongside%20public%20%E2%80%9C.docx" download="AI Consulting Revenues and Practice Scaling.docx" style="font-size:0.68rem; padding:0.35rem 0.7rem;">Revenue Analysis (28)</a>
+      <a class="doc-download" href="Independent%20AI%20adoption%20and%20ROI%20evidence%20across%20AI%20Index%2C%20OECD%2C%20Gartner%20surveys%20and%20earnings%20transcr.docx" download="Independent AI Adoption and ROI Evidence.docx" style="font-size:0.68rem; padding:0.35rem 0.7rem;">Independent Evidence (16)</a>
+    </span>
+  </div>
+
+  <div class="share-row reveal" style="margin-top:2rem;">
+    <a class="share-btn" id="share-x" href="#" target="_blank" rel="noopener">&#x1D54F; &ensp;Share on X</a>
+    <a class="share-btn" id="share-li" href="#" target="_blank" rel="noopener">in &ensp;Share on LinkedIn</a>
+    <button class="share-btn" onclick="copyLink()">&#128279; &ensp;Copy Link</button>
+  </div>
+
+  <!-- About the Author -->
+  <div class="reveal" style="margin-top:3rem; padding-top:2rem; border-top:1px solid var(--border);">
+    <div style="font-size:0.65rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--purple); margin-bottom:1rem;">About the Author</div>
+    <div style="font-family:var(--font-serif); font-size:1.2rem; font-weight:700; margin-bottom:0.3rem;">Sparsh Gupta</div>
+    <div style="font-size:0.78rem; color:var(--text-secondary); margin-bottom:1rem;">Product Manager @Grant Thornton &middot; AI Strategist &middot; Co-Founder, EonLex Technologies</div>
+    <div style="display:flex; flex-wrap:wrap; gap:0.5rem 1.5rem; font-size:0.72rem; color:var(--text-muted); margin-bottom:1.2rem; line-height:1.8;">
+      <span><strong style="color:var(--text-secondary);">Grant Thornton</strong> &mdash; PM, AI-driven Audit Transformation</span>
+      <span><strong style="color:var(--text-secondary);">EonLex Technologies</strong> &mdash; Co-Founder, GenAI + Legal Tech</span>
+      <span><strong style="color:var(--text-secondary);">Northvolt AB</strong> &mdash; Gen AI Procurement &amp; Supply Chain</span>
+      <span><strong style="color:var(--text-secondary);">GreyB Services</strong> &mdash; Patent Analytics &amp; IP Strategy</span>
+      <span><strong style="color:var(--text-secondary);">Kyushu University</strong> &mdash; AI/ML Research</span>
+    </div>
+    <p style="font-size:0.78rem; color:var(--text-muted); line-height:1.7; max-width:650px; margin:0 auto;">5+ years across AI product management, generative AI implementation, and innovation strategy. This research draws on firsthand experience building and deploying AI-driven products across audit, legal tech, procurement, and IP &mdash; observing how organisations adopt, over-correct, and eventually stabilise around new technology paradigms.</p>
+  </div>
+
+  <p style="margin-top:2.5rem; font-size:0.7rem; color:var(--text-muted);">&copy; 2026 Sparsh Gupta. All rights reserved. Data sourced from public reports, earnings calls, and industry trackers.</p>
+</footer>
+
+<!-- ══════════════════════════════════════
+     JAVASCRIPT
+     ══════════════════════════════════════ -->
+<script>
+// ── Scroll Progress ──
+const progressBar = document.getElementById('progress');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+  progressBar.style.width = pct + '%';
+});
+
+// ── Nav show/hide ──
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 600) {
+    nav.classList.add('visible');
+  } else {
+    nav.classList.remove('visible');
+  }
+});
+
+// ── Active nav link ──
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('nav .nav-links a');
+const observerNav = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const link = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+      if (link) link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-40% 0px -40% 0px' });
+sections.forEach(s => { if(s.id !== 'hero') observerNav.observe(s); });
+
+// ── Reveal on scroll ──
+const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+const observerReveal = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => observerReveal.observe(el));
+
+// ── Bar chart animation ──
+const bars = document.querySelectorAll('.bar-fill');
+const observerBars = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const w = entry.target.getAttribute('data-width');
+      entry.target.style.width = w + '%';
+      entry.target.classList.add('animated');
+    }
+  });
+}, { threshold: 0.3 });
+bars.forEach(b => observerBars.observe(b));
+
+// ── Firm card toggle ──
+function toggleFirm(header) {
+  const card = header.closest('.firm-card');
+  card.classList.toggle('open');
+}
+
+// ── Share buttons ──
+function getShareText() {
+  return encodeURIComponent(
+    'The AI Prophecy Machine: How top consultancies publish contradictory AI narratives — where every position opens a new revenue stream.\n\n'
+    + '88% "adoption" (consultancy surveys) vs <10% in core business (OECD).\n'
+    + '80%+ report no EBIT impact (McKinsey\'s own data).\n'
+  );
+}
+function updateShareLinks() {
+  const url = encodeURIComponent(window.location.href);
+  const text = getShareText();
+  document.getElementById('share-x').href = 'https://x.com/intent/tweet?text=' + text + '&url=' + url;
+  document.getElementById('share-li').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + url;
+}
+updateShareLinks();
+
+function copyLink() {
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    const btn = event.target.closest('.share-btn');
+    const orig = btn.innerHTML;
+    btn.innerHTML = '&#10003; Copied!';
+    setTimeout(() => { btn.innerHTML = orig; }, 2000);
+  });
+}
+
+// ── Smooth scroll for nav ──
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', (e) => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>
